@@ -17,11 +17,16 @@ public class Supermercato /*extends Thread*/{
     public static boolean isGiocando;
     public static int timerUpdate = 2000;
 
+    // backend
+    public static Cassa[] casse;
+    private static LinkedList<Cliente> clienti;
+    public static Reparto[] reparti;
+    
     // grafica
     public static JFrame finestra = new JFrame();
-    private static JLabel[] casseGrafica = new JLabel[5];
+    private static JLabel[] casseGrafica;
     private static int[] areaCasse = new int[]{700, 50, 1900, 300};
-    private static JLabel[] scaffali = new JLabel[5];
+    private static JLabel[] scaffali;
     private static int[] areaScaffali = new int[]{250, 450, 1920, 800};
 
     // backend
