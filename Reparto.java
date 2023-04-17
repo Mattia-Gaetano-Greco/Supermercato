@@ -1,20 +1,23 @@
-import java.lang.reflect.Array;
 import java.util.HashMap;
+import java.util.concurrent.Semaphore;
 
 public class Reparto {
-    private HashMap <Prodotto, Integer> prodotti; // Prodotto, numero di prodotti
+    private HashMap <Prodotto, Integer> prodotti;
     public String nomeReparto;
 
+    private Semaphore semaforo;    
+
     public Reparto(int numeroReparto){
+        semaforo = new Semaphore(1);
         prodotti=new HashMap<Prodotto, Integer>();
         switch(numeroReparto){
             default:
                 this.nomeReparto = "frutta";
-                prodotti.put(new Prodotto("banana", 20, this), 2);
+                prodotti.put(new Prodotto("banana", 10, this), 2);
                 prodotti.put(new Prodotto("arancio", 10, this), 2);
                 prodotti.put(new Prodotto("kiwi", 10, this), 2);
                 prodotti.put(new Prodotto("pera", 10, this), 2);
-                prodotti.put(new Prodotto("mela", 5, this), 2);
+                prodotti.put(new Prodotto("mela", 10, this), 2);
             break;
             case 1:
                 this.nomeReparto = "latticini";
@@ -52,9 +55,6 @@ public class Reparto {
                 
     }
 
-    public Prodotto[] getArrayProdotti(){
-        return prodotti.keySet().toArray(new Prodotto[5]);
-    }
     //per creare la lista casuale dei clienti
     //come se fosse un volantino di prodotti
     public Prodotto getCasualProdotto(){
@@ -64,16 +64,34 @@ public class Reparto {
         return p;
     }
 
-    public int getQuantity(Prodotto prod){
-        return prodotti.get(prod);
-    }
-
+    //cliente prende il prodotto
     public boolean prendi(Prodotto prodotto){
+
+        try
+        {
+            semaforo.acquire();
+        }
+        catch (InterruptedException ie)
+        {
+            ie.printStackTrace();
+        }
+
         if(prodotti.get(prodotto) == 0){
+            semaforo.release();
             return false;
         }else{
             prodotti.put(prodotto, prodotti.get(prodotto) - 1);
+            semaforo.release();
             return true;
         }
     }
+    
+    public Prodotto[] getArrayProdotti(){
+        return prodotti.keySet().toArray(new Prodotto[5]);
+    }
+
+    public int getQuantity(Prodotto prod){
+        return prodotti.get(prod);
+    }
+    
 }

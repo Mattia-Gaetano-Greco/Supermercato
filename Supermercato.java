@@ -11,7 +11,7 @@ public class Supermercato /*extends Thread*/{
     private static int earning;
     private static boolean isOpen;
     private static Supermercato supermercato;
-
+    
     // variabili di Supermercato
     public static boolean isGiocando;
     public static int timerUpdate = 2000;
@@ -20,14 +20,14 @@ public class Supermercato /*extends Thread*/{
     public static Cassa[] casse;
     private static LinkedList<Cliente> clienti;
     public static Reparto[] reparti;
-
+    
     // grafica
     public static JFrame finestra = new JFrame();
     private static JLabel[] casseGrafica;
     private static int[] areaCasse = new int[]{700, 50, 1900, 300};
     private static JLabel[] scaffali;
     private static int[] areaScaffali = new int[]{250, 450, 1920, 800};
-
+    
     public static void init(){
         earning=0;
         isOpen=true;
@@ -36,20 +36,20 @@ public class Supermercato /*extends Thread*/{
         for(int i = 0; i < casse.length; i++){
             casse[i] = new Cassa();
         }
-        
+
         //creazione dei reparti del supermercato
         reparti=new Reparto[5];
         for(int i = 0; i < reparti.length; i++){
             reparti[i] = new Reparto(i);
         }
-        
+
         //creazione clienti del supermercato
         clienti=new LinkedList<Cliente>();
         for(int i = 0; i < 10; i++){
             clienti.add(new Cliente());
         }
         System.out.println("passo");
-        
+
         initFinestra();
     }
 
@@ -80,7 +80,7 @@ public class Supermercato /*extends Thread*/{
             l.setLocation(areaScaffali[0] + scaffaleSize * i * 2, areaScaffali[1]);
             l.setBackground(Color.GREEN);
             l.setOpaque(true);
-            JLabel c = new JLabel();
+            JLabel c = new JLabel("Tutti i prodotti!");
             finestra.add(c);
             c.setSize(300, 150);
             c.setLocation((int)l.getLocation().getX() - (int)l.getSize().getWidth()/2, (int)l.getLocation().getY() - 150);
@@ -108,9 +108,34 @@ public class Supermercato /*extends Thread*/{
         }
     }
 
+    public Supermercato(){
+        
+        //initFinestra();
+        earning=0;
+        isOpen=true;
+        //creazione casse
+        casse=new Cassa[3];
+        for(int i = 0; i < casse.length; i++){
+            casse[i] = new Cassa();
+        }
+        
+        //creazione dei reparti del supermercato
+        reparti=new Reparto[5];
+        for(int i = 0; i < reparti.length; i++){
+            reparti[i] = new Reparto(i);
+        }
+        
+        //creazione clienti del supermercato
+        clienti=new LinkedList<Cliente>();
+        for(int i = 0; i < 10; i++){
+            clienti.add(new Cliente(this));
+        }
+    }
+
 
     public void prova() {
         clienti.get(0).start();
+        clienti.get(1).start();
     }
 
 
