@@ -1,7 +1,8 @@
+import java.lang.reflect.Array;
 import java.util.HashMap;
 
 public class Reparto {
-    private HashMap <Prodotto, Integer> prodotti;
+    private HashMap <Prodotto, Integer> prodotti; // Prodotto, numero di prodotti
     public String nomeReparto;
 
     public Reparto(int numeroReparto){
@@ -51,6 +52,9 @@ public class Reparto {
                 
     }
 
+    public Prodotto[] getArrayProdotti(){
+        return prodotti.keySet().toArray(new Prodotto[5]);
+    }
     //per creare la lista casuale dei clienti
     //come se fosse un volantino di prodotti
     public Prodotto getCasualProdotto(){
@@ -58,6 +62,10 @@ public class Reparto {
         int index = (int)(Math.random() * 4);
         Prodotto p = (Prodotto)prodotti.keySet().toArray()[index];
         return p;
+    }
+
+    public int getQuantity(Prodotto prod){
+        return prodotti.get(prod);
     }
 
     public boolean prendi(Prodotto prodotto){
