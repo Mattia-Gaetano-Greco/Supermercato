@@ -84,7 +84,14 @@ public class Reparto {
             semaforo.release();
             return true;
         }
-
-        
     }
+    
+    public Prodotto[] getArrayProdotti(){
+        return prodotti.keySet().toArray(new Prodotto[5]);
+    }
+
+    public int getQuantity(Prodotto prod){
+        return prodotti.get(prod);
+    }
+    
 }
