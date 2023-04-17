@@ -8,8 +8,10 @@ import javax.swing.*;
  */
 public class Supermercato /*extends Thread*/{
 
-    private int earning;
-    private boolean isOpen;
+    private static int earning;
+    private static boolean isOpen;
+    private static Supermercato supermercato;
+    
 
     // variabili di Supermercato
     public static boolean isGiocando;
