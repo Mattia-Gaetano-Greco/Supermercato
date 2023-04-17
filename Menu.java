@@ -30,6 +30,6 @@ public class Menu
     
     private static void startGame()
     {
-        Supermercato.init();
+        new Supermercato().prova();
     }
 }

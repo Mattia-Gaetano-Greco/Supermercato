@@ -6,11 +6,15 @@ public class Cliente extends Thread{
     //boolean indica se il prodotto è stato trovato o meno
     private HashMap<Prodotto, Boolean> listaSpesa;
     //===============================
-    public Cliente(){
+    Supermercato supermercato;
+
+    public Cliente(Supermercato supermercato){
         listaSpesa=new HashMap<Prodotto, Boolean>();
-        listaSpesa.put(Supermercato.reparti[/*x*/ 0 ].getCasualProdotto(), false);
-        listaSpesa.put(Supermercato.reparti[/*x*/ 0 ].getCasualProdotto(), false);
-        listaSpesa.put(Supermercato.reparti[/*x*/ 0 ].getCasualProdotto(), false);
+        this.supermercato=supermercato;
+        
+        listaSpesa.put(supermercato.reparti[/*x*/ 0 ].getCasualProdotto(), false);
+        listaSpesa.put(supermercato.reparti[/*x*/ 0 ].getCasualProdotto(), false);
+        //listaSpesa.put(supermercato.reparti[/*x*/ 0 ].getCasualProdotto(), false);
         /*listaSpesa.put(new Prodotto("banana", 20), true);
         listaSpesa.put(new Prodotto("carne", 100), false);
         listaSpesa.put(new Prodotto("arancia", 10), true);*/
@@ -23,8 +27,15 @@ public class Cliente extends Thread{
         //richiama il metodo compra prodotto
         for(Prodotto p : listaSpesa.keySet()){
             compraProdotto(p);
+            
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        Supermercato.casse[0].incassa(this);
+        
+        supermercato.casse[0].incassa(this);
     }
 
     public void compraProdotto(Prodotto p){
