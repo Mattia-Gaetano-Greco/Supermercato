@@ -27,11 +27,31 @@ public class Supermercato /*extends Thread*/{
     private static int[] areaCasse = new int[]{700, 50, 1900, 300};
     private static JLabel[] scaffali;
     private static int[] areaScaffali = new int[]{250, 450, 1920, 800};
+    
+    public static void init(){
+        earning=0;
+        isOpen=true;
+        //creazione casse
+        casse=new Cassa[3];
+        for(int i = 0; i < casse.length; i++){
+            casse[i] = new Cassa();
+        }
 
-    // backend
-    public Cassa[] casse;
-    private LinkedList<Cliente> clienti;
-    public Reparto[] reparti;
+        //creazione dei reparti del supermercato
+        reparti=new Reparto[5];
+        for(int i = 0; i < reparti.length; i++){
+            reparti[i] = new Reparto(i);
+        }
+
+        //creazione clienti del supermercato
+        clienti=new LinkedList<Cliente>();
+        for(int i = 0; i < 10; i++){
+            clienti.add(new Cliente());
+        }
+        System.out.println("passo");
+
+        initFinestra();
+    }
 
     public static void initFinestra() {
         // creazione finestra
