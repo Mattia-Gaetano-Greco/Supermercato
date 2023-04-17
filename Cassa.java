@@ -1,6 +1,5 @@
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.Semaphore;
 
 public class Cassa {
@@ -19,7 +18,7 @@ public class Cassa {
     }
 
     public void incassa(Cliente cliente) {
-        HashMap temporanea = cliente.getListaSpesa();
+        HashMap<Prodotto, Boolean> temporanea = cliente.getListaSpesa();
 
         int i = 0;
         Collection<Boolean> values = temporanea.values();
