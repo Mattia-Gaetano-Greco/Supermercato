@@ -59,6 +59,13 @@ public class Supermercato /*extends Thread*/{
             c.setVisible(false);
             c.setOpaque(true);
             c.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+            Prodotto[] prodottiReparto = reparti[i].getArrayProdotti();
+            for (int j = 0; j < prodottiReparto.length; j++) {
+                JLabel p = new JLabel(prodottiReparto[j].name+"    "+reparti[i].getQuantity(prodottiReparto[j]));
+                c.add(p);
+                p.setSize(c.getWidth() - 10, c.getHeight()/prodottiReparto.length);
+                p.setLocation(10, p.getHeight()*j);
+            }
             l.addMouseListener(new MouseListener() {
                 public void mouseExited(MouseEvent m){
                     c.setVisible(false);
