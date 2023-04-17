@@ -12,7 +12,6 @@ public class Supermercato /*extends Thread*/{
     private static boolean isOpen;
     private static Supermercato supermercato;
     
-
     // variabili di Supermercato
     public static boolean isGiocando;
     public static int timerUpdate = 2000;
@@ -41,6 +40,7 @@ public class Supermercato /*extends Thread*/{
         Supermercato.finestra.setVisible(true);
         Supermercato.finestra.setLayout(null);
         // creazione casse
+        casseGrafica = new JLabel[casse.length];
         int cassaSize = (areaCasse[2] - areaCasse[0]) / 10;
         for (int i = 0; i < casseGrafica.length; i++) {
             JLabel l = new JLabel("Cassa!");
@@ -51,6 +51,7 @@ public class Supermercato /*extends Thread*/{
             l.setOpaque(true);
         }
         // creazione scaffali
+        scaffali = new JLabel[reparti.length];
         int scaffaleSize = (areaScaffali[2] - areaScaffali[0]) / 10;
         for (int i = 0; i < scaffali.length; i++){
             JLabel l = new JLabel("Scaffale!");
