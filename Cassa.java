@@ -78,7 +78,7 @@ public class Cassa {
             jlabelCoda[i].setText("");
         }
         if (coda.size() > 5) {
-            jlabelCoda[4].setText("+"+(coda.size()-i-1));
+            jlabelCoda[4].setText("+"+(coda.size()-4));
         }
     }
 
