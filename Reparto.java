@@ -59,7 +59,7 @@ public class Reparto {
     //per creare la lista casuale dei clienti
     //come se fosse un volantino di prodotti
     public Prodotto getCasualProdotto(){
-        int index = (int)(Math.random() * 4);
+        int index = (int)((Math.random()-0.001) * 5);
         Prodotto p = (Prodotto)prodotti.keySet().toArray()[index];
         return p;
     }
