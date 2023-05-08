@@ -9,7 +9,7 @@ public class Cliente extends Thread{
     public Cliente(){
         listaSpesa=new HashMap<Prodotto, Boolean>();
         for (int i = 0; i < (int)(Math.random()*3)+1; i++) {
-            listaSpesa.put(Supermercato.reparti[(int)(Math.random()*4)].getCasualProdotto(), false);
+            listaSpesa.put(Supermercato.reparti[(int)((Math.random()-0.001)*5)].getCasualProdotto(), false);
         }
         //nome = new Integer(numero).toString();
         nome = "" + numero;
