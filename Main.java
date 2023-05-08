@@ -1,8 +1,14 @@
+/**
+ * Classe che contiene il main utilizzato per eseguire il programma
+ * @author Mattia Gaetano Greco
+ * @version 1.0.0
+ */
 public class Main {
-    public static void main(String[] args) throws Exception {
-        //Cliente daniele = new Cliente();
-        //Cassa cassa = new Cassa();
-        //cassa.incassa(daniele);
+    /**
+     * Metodo main del programma
+     * @param args non utilizzato
+     */
+    public static void main(String[] args) {
         Menu.init();
     }
 }

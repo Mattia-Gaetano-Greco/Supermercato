@@ -3,14 +3,20 @@ import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 import java.util.LinkedList;
 import javax.swing.JLabel;
-
+/**
+ * Cassa che gestisce una coda di oggetti di tipo Cliente (utilizzando i Semaphore)
+ * @author Daniele Gherardi
+ * @version 1.0.0
+ */
 public class Cassa {
     private Semaphore semaforo;
     //private int totGiornaliero;
     public boolean isOpen;
     private LinkedList<Cliente> coda;
     public JLabel[] jlabelCoda;
-
+    /**
+     * Crea una cassa con una coda lunga 5 clienti.
+     */
     public Cassa(){
         semaforo=new Semaphore(1);
         //totGiornaliero=0;
@@ -18,11 +24,16 @@ public class Cassa {
         coda = new LinkedList<Cliente>();
         jlabelCoda = new JLabel[5];
     }
-
+    /**
+     * Apre o chiude la cassa (a seconda dello stato in cui si trova).
+     */
     public void apri_chiudiCassa(){
         isOpen=!isOpen;
     }
-
+    /**
+     * Blocca la cassa per 2 secondi, durante i quali per ogni prodotto del cliente accredita al supermercato il prezzo dello stesso. Rimuove in seguito il cliente dalla coda.
+     * @param cliente Cliente di cui gestire la spesa
+     */
     public void paga(Cliente cliente) {
         if(isOpen){
             coda.addLast(cliente);
@@ -67,7 +78,9 @@ public class Cassa {
             semaforo.release();
         }
     }
-    
+    /**
+     * Scrive i nomi dei clienti in coda (ordinati) sulla nuvoletta della cassa
+     */
     private void scriviCodaSuNuvoletta(){
         int max = coda.size() < 5 ? coda.size() : 4;
         int i = 0;
@@ -77,11 +90,14 @@ public class Cassa {
         for (; i < 5; i++) {
             jlabelCoda[i].setText("");
         }
-        if (coda.size() > 5) {
+        if (coda.size() > 4) {
             jlabelCoda[4].setText("+"+(coda.size()-4));
         }
     }
-
+    /**
+     * Restituisce la dimensione della coda
+     * @return dimensione della coda
+     */
     public int getCoda(){
         return coda.size();
     }

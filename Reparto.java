@@ -1,7 +1,11 @@
 import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 import javax.swing.*;
-
+/**
+ * Reparto contenente prodotti
+ * @author Daniele Gherardi
+ * @version 1.0.0
+ */
 public class Reparto {
     private HashMap <Prodotto, Integer> prodotti;
     public String nomeReparto;

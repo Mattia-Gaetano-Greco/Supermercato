@@ -1,9 +1,16 @@
 //import javax.swing.*;
 //import java.awt.event.*;
 //import java.awt.*;
-
+/**
+ * Classe non utilizzata
+ * @author Mattia Gaetano Greco
+ * @version 1.0.0
+ */
 public class Menu
 {
+    /**
+     * Esegue il metodo startGame che fa partire il gioco
+     */
     public static void init()
     {
         //Gioco.finestra.getContentPane().setBackground(Color.BLACK);
@@ -27,7 +34,9 @@ public class Menu
         });*/
         startGame();
     }
-    
+    /**
+     * Fa partire il supermercato
+     */
     private static void startGame()
     {
         Supermercato.init();

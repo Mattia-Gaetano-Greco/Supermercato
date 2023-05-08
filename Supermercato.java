@@ -4,12 +4,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
 import java.util.*;
-
 /**
- * Supermercato
+ * Simulatore di supermercato con clienti, casse e reparti
+ * @author Daniele Gherardi & Mattia Gaetano Greco
+ * @version 1.0.0
  */
 public class Supermercato{
-
     //private static int earning;
     //private static boolean isOpen;
     //private static Supermercato supermercato;
@@ -29,7 +29,9 @@ public class Supermercato{
     private static int[] areaCasse = new int[]{700, 50, 1900, 300};
     private static JLabel[] scaffali;
     private static int[] areaScaffali = new int[]{250, 450, 1920, 800};
-    
+    /**
+     * Fa partire la simulazione del supermercato, avviando quindi i thread degli oggetti Cliente e creando i reparti e le casse
+     */
     public static void init(){
         //earning=0;
         //isOpen=true;
@@ -64,7 +66,9 @@ public class Supermercato{
             clienti.get(i).start();
         }
     }
-
+    /**
+     * Inizializza la finestra su cui verrà visualizzata la mappa del supermercato su cui sta avvenendo la simulazione
+     */
     public static void initFinestra() {
         // creazione finestra
         Supermercato.finestra.setSize(1920,1040);
@@ -156,6 +160,9 @@ public class Supermercato{
             });
         }
     }
+    /**
+     * Apre una cassa
+     */
     public static void apriNuovaCassa() {
         for(int i = 0; i < casse.length; i++){
             if(!casse[i].isOpen){
