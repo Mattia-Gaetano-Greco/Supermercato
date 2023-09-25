@@ -1,3 +1,6 @@
+
+![Screenshot](https://github.com/Mattia-Gaetano-Greco/Supermercato/assets/101709398/55d05f26-ece0-4997-9419-a26f34deb256)
+
 ## Features:
 
 Negozio:
